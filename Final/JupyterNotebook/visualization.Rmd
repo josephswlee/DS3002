@@ -1,0 +1,30 @@
+---
+title: "DS3002 Final - Visualization"
+author: "Joseph Lee (sl5nj)"
+date: '2022-05-05'
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+sp500vis <- read_csv('sp500vis.csv')
+```
+
+```{r}
+fig <- sp500vis %>% ggplot(aes(x=date, y=adj_close, color = ticker, group = ticker)) +
+  geom_line() + theme_bw() +
+  labs(x = "Date", y = "Closing Price", title = "2019 Closing Price by Tickers")
+
+fig
+```
+
